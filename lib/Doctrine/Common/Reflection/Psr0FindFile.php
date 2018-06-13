@@ -35,10 +35,11 @@ class Psr0FindFile implements ClassFinderInterface
      */
     public function findFile($class)
     {
-        $lastNsPos = strrpos($class, '\\');
         if ($class[0] === '\\') {
             $class = substr($class, 1);
         }
+
+        $lastNsPos = strrpos($class, '\\');
 
         if ($lastNsPos !== false) {
             // namespaced class name
