@@ -21,8 +21,7 @@ class StaticReflectionProperty extends ReflectionProperty
     protected $propertyName;
 
     /**
-     * @param StaticReflectionParser $staticReflectionParser
-     * @param string|null            $propertyName
+     * @param string|null $propertyName
      */
     public function __construct(StaticReflectionParser $staticReflectionParser, $propertyName)
     {
@@ -63,7 +62,7 @@ class StaticReflectionProperty extends ReflectionProperty
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getUseStatements()
     {

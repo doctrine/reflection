@@ -1,13 +1,33 @@
 <?php
+
 namespace Doctrine\Common\Reflection;
 
 use Doctrine\Common\Annotations\TokenParser;
 use ReflectionException;
+use const T_CLASS;
+use const T_DOC_COMMENT;
+use const T_EXTENDS;
+use const T_FUNCTION;
+use const T_PAAMAYIM_NEKUDOTAYIM;
+use const T_PRIVATE;
+use const T_PROTECTED;
+use const T_PUBLIC;
+use const T_STRING;
+use const T_USE;
+use const T_VAR;
+use const T_VARIABLE;
+use function array_merge;
+use function file_get_contents;
+use function ltrim;
+use function preg_match;
+use function sprintf;
+use function strpos;
+use function strrpos;
+use function strtolower;
+use function substr;
 
 /**
  * Parses a file for namespaces/use/class declarations.
- *
- * @author Karoly Negyesi <karoly@negyesi.net>
  */
 class StaticReflectionParser implements ReflectionProviderInterface
 {
@@ -28,7 +48,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
     /**
      * Whether the caller only wants class annotations.
      *
-     * @var boolean.
+     * @var bool
      */
     protected $classAnnotationOptimize;
 
@@ -42,7 +62,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
     /**
      * Whether the parser has run.
      *
-     * @var boolean
+     * @var bool
      */
     protected $parsed = false;
 
@@ -56,7 +76,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
     /**
      * The use statements of the class.
      *
-     * @var array
+     * @var string[]
      */
     protected $useStatements = [];
 
@@ -68,7 +88,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
     protected $docComment = [
         'class' => '',
         'property' => [],
-        'method' => []
+        'method' => [],
     ];
 
     /**
@@ -90,8 +110,8 @@ class StaticReflectionParser implements ReflectionProviderInterface
      *
      * @param string               $className               The full, namespaced class name.
      * @param ClassFinderInterface $finder                  A ClassFinder object which finds the class.
-     * @param boolean              $classAnnotationOptimize Only retrieve the class docComment.
-     *                                                      Presumes there is only one statement per line.
+     * @param bool                 $classAnnotationOptimize Only retrieve the class docComment.
+     *                                                         Presumes there is only one statement per line.
      */
     public function __construct($className, $finder, $classAnnotationOptimize = false)
     {
@@ -114,13 +134,17 @@ class StaticReflectionParser implements ReflectionProviderInterface
      */
     protected function parse()
     {
-        if ($this->parsed || ! $fileName = $this->finder->findFile($this->className)) {
+        $fileName = $this->finder->findFile($this->className);
+
+        if ($this->parsed || ! $fileName) {
             return;
         }
         $this->parsed = true;
         $contents     = file_get_contents($fileName);
         if ($this->classAnnotationOptimize) {
-            if (preg_match("/\A.*^\s*((abstract|final)\s+)?class\s+{$this->shortClassName}\s+/sm", $contents, $matches)) {
+            $regex = sprintf('/\A.*^\s*((abstract|final)\s+)?class\s+%s\s+/sm', $this->shortClassName);
+
+            if (preg_match($regex, $contents, $matches)) {
                 $contents = $matches[0];
             }
         }
@@ -162,6 +186,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
                     // there can be & before the function name so find the
                     // string.
                     while (($token = $tokenParser->next()) && $token[0] !== T_STRING) {
+                        continue;
                     }
                     $methodName                              = $token[1];
                     $this->docComment['method'][$methodName] = $docComment;
@@ -182,13 +207,15 @@ class StaticReflectionParser implements ReflectionProviderInterface
                             $postfix = '';
                         }
                         foreach ($this->useStatements as $alias => $use) {
-                            if ($alias == $prefix) {
-                                $this->parentClassName = '\\' . $use . $postfix;
-                                $fullySpecified        = true;
+                            if ($alias !== $prefix) {
+                                continue;
                             }
+
+                            $this->parentClassName = '\\' . $use . $postfix;
+                            $fullySpecified        = true;
                         }
                     }
-                    if ( ! $fullySpecified) {
+                    if (! $fullySpecified) {
                         $this->parentClassName = '\\' . $this->namespace . '\\' . $this->parentClassName;
                     }
                     break;
@@ -253,7 +280,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
     /**
      * Gets the use statements from this file.
      *
-     * @return array
+     * @return string[]
      */
     public function getUseStatements()
     {
@@ -293,7 +320,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
         if (isset($this->docComment[$type][$name])) {
             return $this;
         }
-        if ( ! empty($this->parentClassName)) {
+        if (! empty($this->parentClassName)) {
             return $this->getParentStaticReflectionParser()->getStaticReflectionParserForDeclaringClass($type, $name);
         }
         throw new ReflectionException('Invalid ' . $type . ' "' . $name . '"');

@@ -21,8 +21,7 @@ class StaticReflectionMethod extends ReflectionMethod
     protected $methodName;
 
     /**
-     * @param StaticReflectionParser $staticReflectionParser
-     * @param string                 $methodName
+     * @param string $methodName
      */
     public function __construct(StaticReflectionParser $staticReflectionParser, $methodName)
     {
@@ -71,7 +70,7 @@ class StaticReflectionMethod extends ReflectionMethod
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getUseStatements()
     {
