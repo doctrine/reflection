@@ -9,7 +9,33 @@ use function call_user_func;
 
 class RuntimePublicReflectionPropertyTest extends TestCase
 {
-    public function testGetValueOnProxyPublicProperty()
+    public function testGetValue() : void
+    {
+        $object = new RuntimePublicReflectionPropertyTestClass();
+
+        $reflProperty = new RuntimePublicReflectionProperty(RuntimePublicReflectionPropertyTestClass::class, 'test');
+
+        self::assertSame('testValue', $reflProperty->getValue($object));
+
+        unset($object->test);
+
+        self::assertNull($reflProperty->getValue($object));
+    }
+
+    public function testSetValue() : void
+    {
+        $object = new RuntimePublicReflectionPropertyTestClass();
+
+        $reflProperty = new RuntimePublicReflectionProperty(RuntimePublicReflectionPropertyTestClass::class, 'test');
+
+        self::assertSame('testValue', $reflProperty->getValue($object));
+
+        $reflProperty->setValue($object, 'changedValue');
+
+        self::assertSame('changedValue', $reflProperty->getValue($object));
+    }
+
+    public function testGetValueOnProxyPublicProperty() : void
     {
         $getCheckMock = $this->getMockBuilder('stdClass')->setMethods(['callGet'])->getMock();
         $getCheckMock->expects($this->never())->method('callGet');
@@ -30,7 +56,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
         self::assertNull($reflProperty->getValue($mockProxy));
     }
 
-    public function testSetValueOnProxyPublicProperty()
+    public function testSetValueOnProxyPublicProperty() : void
     {
         $setCheckMock = $this->getMockBuilder('stdClass')->setMethods(['neverCallSet'])->getMock();
         $setCheckMock->expects($this->never())->method('neverCallSet');
@@ -184,4 +210,10 @@ class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
     public function __getCloner()
     {
     }
+}
+
+class RuntimePublicReflectionPropertyTestClass
+{
+    /** @var string|null */
+    public $test = 'testValue';
 }
