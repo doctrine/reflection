@@ -2,19 +2,20 @@
 
 namespace Doctrine\Tests\Common\Reflection;
 
-use Doctrine\Tests\Common\Reflection\NoParent;
+use Doctrine\Common\Reflection\Psr0FindFile;
+use Doctrine\Common\Reflection\StaticReflectionParser;
 use Doctrine\Tests\Common\Reflection\Dummies\NoParent as NoParentDummy;
 use Doctrine\Tests\DoctrineTestCase;
-use Doctrine\Common\Reflection\StaticReflectionParser;
-use Doctrine\Common\Reflection\Psr0FindFile;
 use ReflectionException;
+use function strlen;
+use function substr;
 
 class StaticReflectionParserTest extends DoctrineTestCase
 {
     /**
      * @dataProvider parentClassData
      *
-     * @param bool $classAnnotationOptimize
+     * @param bool   $classAnnotationOptimize
      * @param string $parsedClassName
      * @param string $expectedClassName
      *
@@ -38,30 +39,46 @@ class StaticReflectionParserTest extends DoctrineTestCase
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function parentClassData()
     {
         $data                 = [];
         $noParentClassName    = NoParent::class;
         $dummyParentClassName = NoParentDummy::class;
+
         foreach ([false, true] as $classAnnotationOptimize) {
             $data[] = [
-              $classAnnotationOptimize, $noParentClassName, $noParentClassName,
+                $classAnnotationOptimize,
+                $noParentClassName,
+                $noParentClassName,
             ];
+
             $data[] = [
-              $classAnnotationOptimize, FullyClassifiedParent::class, $noParentClassName,
+                $classAnnotationOptimize,
+                FullyClassifiedParent::class,
+                $noParentClassName,
             ];
+
             $data[] = [
-              $classAnnotationOptimize, SameNamespaceParent::class, $noParentClassName,
+                $classAnnotationOptimize,
+                SameNamespaceParent::class,
+                $noParentClassName,
             ];
+
             $data[] = [
-              $classAnnotationOptimize, DeeperNamespaceParent::class, $dummyParentClassName,
+                $classAnnotationOptimize,
+                DeeperNamespaceParent::class,
+                $dummyParentClassName,
             ];
+
             $data[] = [
-              $classAnnotationOptimize, UseParent::class, $dummyParentClassName,
+                $classAnnotationOptimize,
+                UseParent::class,
+                $dummyParentClassName,
             ];
         }
+
         return $data;
     }
 
@@ -84,7 +101,7 @@ class StaticReflectionParserTest extends DoctrineTestCase
     }
 
     /**
-     * @return array
+     * @return string[]|bool[]
      */
     public function classAnnotationOptimize()
     {

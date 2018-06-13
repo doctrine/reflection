@@ -11,5 +11,4 @@ use Doctrine\Common\Annotations\Annotation;
  */
 class ExampleAnnotationClass
 {
-
 }

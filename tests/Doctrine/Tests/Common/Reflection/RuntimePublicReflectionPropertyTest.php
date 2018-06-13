@@ -4,8 +4,10 @@ namespace Doctrine\Tests\Common\Reflection;
 
 use Doctrine\Common\Proxy\Proxy;
 use Doctrine\Common\Reflection\RuntimePublicReflectionProperty;
+use PHPUnit\Framework\TestCase;
+use function call_user_func;
 
-class RuntimePublicReflectionPropertyTest extends \PHPUnit\Framework\TestCase
+class RuntimePublicReflectionPropertyTest extends TestCase
 {
     public function testGetValueOnProxyPublicProperty()
     {
@@ -71,19 +73,13 @@ class RuntimePublicReflectionPropertyTest extends \PHPUnit\Framework\TestCase
  */
 class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
 {
-    /**
-     * @var \Closure|null
-     */
+    /** @var \Closure|null */
     private $initializer = null;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $initialized = false;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $checkedProperty = 'testValue';
 
     /**
@@ -97,7 +93,7 @@ class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
     /**
      * {@inheritDoc}
      */
-    public function __setInitializer(\Closure $initializer = null)
+    public function __setInitializer(?\Closure $initializer = null)
     {
         $this->initializer = $initializer;
     }
@@ -178,7 +174,7 @@ class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
     /**
      * {@inheritDoc}
      */
-    public function __setCloner(\Closure $cloner = null)
+    public function __setCloner(?\Closure $cloner = null)
     {
     }
 
