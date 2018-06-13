@@ -1,4 +1,5 @@
 <?php
+
 namespace Doctrine\Common\Reflection;
 
 use ReflectionException;

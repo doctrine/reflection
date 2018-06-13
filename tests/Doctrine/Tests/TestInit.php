@@ -1,7 +1,5 @@
 <?php
-/*
- * This file bootstraps the test environment.
- */
+
 namespace Doctrine\Tests;
 
 use const E_ALL;
