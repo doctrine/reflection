@@ -24,7 +24,7 @@ class StaticReflectionClassTest extends TestCase
             ->method('getClassName')
             ->willReturn('ClassName');
 
-        self::assertEquals('ClassName', $this->staticReflectionClass->getName());
+        self::assertSame('ClassName', $this->staticReflectionClass->getName());
     }
 
     public function testGetDocComment() : void
@@ -33,7 +33,7 @@ class StaticReflectionClassTest extends TestCase
             ->method('getDocComment')
             ->willReturn('test doc comment');
 
-        self::assertEquals('test doc comment', $this->staticReflectionClass->getDocComment());
+        self::assertSame('test doc comment', $this->staticReflectionClass->getDocComment());
     }
 
     public function testGetNamespaceName() : void
@@ -42,7 +42,7 @@ class StaticReflectionClassTest extends TestCase
             ->method('getNamespaceName')
             ->willReturn('Namespace');
 
-        self::assertEquals('Namespace', $this->staticReflectionClass->getNamespaceName());
+        self::assertSame('Namespace', $this->staticReflectionClass->getNamespaceName());
     }
 
     public function testGetUseStatements() : void
@@ -51,7 +51,7 @@ class StaticReflectionClassTest extends TestCase
             ->method('getUseStatements')
             ->willReturn(['ClassName']);
 
-        self::assertEquals(['ClassName'], $this->staticReflectionClass->getUseStatements());
+        self::assertSame(['ClassName'], $this->staticReflectionClass->getUseStatements());
     }
 
     public function testGetMethod() : void
@@ -63,7 +63,7 @@ class StaticReflectionClassTest extends TestCase
             ->with('method')
             ->willReturn($staticReflectionMethod);
 
-        self::assertEquals($staticReflectionMethod, $this->staticReflectionClass->getMethod('method'));
+        self::assertSame($staticReflectionMethod, $this->staticReflectionClass->getMethod('method'));
     }
 
     public function testGetProperty() : void
@@ -75,7 +75,7 @@ class StaticReflectionClassTest extends TestCase
             ->with('property')
             ->willReturn($staticReflectionProperty);
 
-        self::assertEquals($staticReflectionProperty, $this->staticReflectionClass->getProperty('property'));
+        self::assertSame($staticReflectionProperty, $this->staticReflectionClass->getProperty('property'));
     }
 
     /**

@@ -35,7 +35,7 @@ class StaticReflectionParserTest extends DoctrineTestCase
         ];
         $staticReflectionParser = new StaticReflectionParser($parsedClassName, new Psr0FindFile($paths), $classAnnotationOptimize);
         $declaringClassName     = $staticReflectionParser->getStaticReflectionParserForDeclaringClass('property', 'test')->getClassName();
-        self::assertEquals($expectedClassName, $declaringClassName);
+        self::assertSame($expectedClassName, $declaringClassName);
     }
 
     /**
@@ -97,7 +97,7 @@ class StaticReflectionParserTest extends DoctrineTestCase
  *   key = "value"
  * )
  */';
-        self::assertEquals($expectedDocComment, $staticReflectionParser->getDocComment('class'));
+        self::assertSame($expectedDocComment, $staticReflectionParser->getDocComment('class'));
     }
 
     /**

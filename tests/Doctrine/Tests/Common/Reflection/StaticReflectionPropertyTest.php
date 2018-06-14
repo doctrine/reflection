@@ -22,7 +22,7 @@ class StaticReflectionPropertyTest extends TestCase
 
     public function testGetName() : void
     {
-        self::assertEquals($this->propertyName, $this->staticReflectionProperty->getName());
+        self::assertSame($this->propertyName, $this->staticReflectionProperty->getName());
     }
 
     public function testGetDeclaringClass() : void
