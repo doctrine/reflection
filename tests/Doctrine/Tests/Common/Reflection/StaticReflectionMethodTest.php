@@ -22,7 +22,7 @@ class StaticReflectionMethodTest extends TestCase
 
     public function testGetName() : void
     {
-        self::assertEquals($this->methodName, $this->staticReflectionMethod->getName());
+        self::assertSame($this->methodName, $this->staticReflectionMethod->getName());
     }
 
     public function testGetDeclaringClass() : void
@@ -42,7 +42,7 @@ class StaticReflectionMethodTest extends TestCase
             ->method('getNamespaceName')
             ->willReturn('test');
 
-        self::assertEquals('test', $this->staticReflectionMethod->getNamespaceName());
+        self::assertSame('test', $this->staticReflectionMethod->getNamespaceName());
     }
 
     public function testGetDocComment() : void

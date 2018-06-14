@@ -17,7 +17,7 @@ class Psr0FindFileTest extends TestCase
     {
         $file = $this->psr0FindFile->findFile(NoParent::class);
 
-        self::assertEquals(sprintf('%s/NoParent.php', __DIR__), $file);
+        self::assertSame(sprintf('%s/NoParent.php', __DIR__), $file);
     }
 
     public function testFindFileNotFound() : void
@@ -29,14 +29,14 @@ class Psr0FindFileTest extends TestCase
     {
         $file = $this->psr0FindFile->findFile('\Doctrine\Tests\Common\Reflection\NoParent');
 
-        self::assertEquals(sprintf('%s/NoParent.php', __DIR__), $file);
+        self::assertSame(sprintf('%s/NoParent.php', __DIR__), $file);
     }
 
     public function testFindFileFromPearLikeClassName() : void
     {
         $file = $this->psr0FindFile->findFile('Doctrine_Tests_Common_Reflection_NoParent');
 
-        self::assertEquals(sprintf('%s/NoParent.php', __DIR__), $file);
+        self::assertSame(sprintf('%s/NoParent.php', __DIR__), $file);
     }
 
     protected function setUp() : void
