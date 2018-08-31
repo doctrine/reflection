@@ -1,0 +1,18 @@
+{
+    "active": true,
+    "name": "Reflection",
+    "slug": "reflection",
+    "docsSlug": "doctrine-reflection",
+    "versions": [
+        {
+            "name": "1.0",
+            "branchName": "master",
+            "slug": "latest",
+            "current": true,
+            "aliases": [
+                "current",
+                "stable"
+            ]
+        }
+    ]
+}

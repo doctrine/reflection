@@ -1,8 +1,11 @@
 {
     "name": "doctrine/reflection",
     "type": "library",
-    "description": "Doctrine Reflection component",
-    "keywords": ["reflection"],
+    "description": "The Doctrine Reflection project is a simple library used by the various Doctrine projects which adds some additional functionality on top of the reflection functionality that comes with PHP. It allows you to get the reflection information about classes, methods and properties statically.",
+    "keywords": [
+        "reflection",
+        "static"
+    ],
     "homepage": "https://www.doctrine-project.org/projects/reflection.html",
     "license": "MIT",
     "authors": [
