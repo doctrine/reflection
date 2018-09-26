@@ -7,7 +7,6 @@ use ReflectionProperty;
 
 /**
  * PHP Runtime Reflection Public Property - special overrides for public properties.
- *
  */
 class RuntimePublicReflectionProperty extends ReflectionProperty
 {
@@ -39,6 +38,7 @@ class RuntimePublicReflectionProperty extends ReflectionProperty
      *
      * Avoids triggering lazy loading via `__set` if the provided object
      * is a {@see \Doctrine\Common\Proxy\Proxy}.
+     *
      * @link https://bugs.php.net/bug.php?id=63463
      */
     public function setValue($object, $value = null)

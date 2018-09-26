@@ -2,6 +2,7 @@
 
 namespace Doctrine\Tests\Common\Reflection;
 
+use Closure;
 use Doctrine\Common\Proxy\Proxy;
 use Doctrine\Common\Reflection\RuntimePublicReflectionProperty;
 use PHPUnit\Framework\TestCase;
@@ -39,7 +40,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
     {
         $getCheckMock = $this->getMockBuilder('stdClass')->setMethods(['callGet'])->getMock();
         $getCheckMock->expects($this->never())->method('callGet');
-        $initializer = function () use ($getCheckMock) {
+        $initializer = static function () use ($getCheckMock) {
             call_user_func($getCheckMock);
         };
 
@@ -60,7 +61,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
     {
         $setCheckMock = $this->getMockBuilder('stdClass')->setMethods(['neverCallSet'])->getMock();
         $setCheckMock->expects($this->never())->method('neverCallSet');
-        $initializer = function () use ($setCheckMock) {
+        $initializer = static function () use ($setCheckMock) {
             call_user_func([$setCheckMock, 'neverCallSet']);
         };
 
@@ -81,7 +82,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
 
         $setCheckMock = $this->getMockBuilder('stdClass')->setMethods(['callSet'])->getMock();
         $setCheckMock->expects($this->once())->method('callSet');
-        $initializer = function () use ($setCheckMock) {
+        $initializer = static function () use ($setCheckMock) {
             call_user_func([$setCheckMock, 'callSet']);
         };
 
@@ -99,7 +100,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
  */
 class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
 {
-    /** @var \Closure|null */
+    /** @var Closure|null */
     private $initializer = null;
 
     /** @var bool */
@@ -119,7 +120,7 @@ class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
     /**
      * {@inheritDoc}
      */
-    public function __setInitializer(?\Closure $initializer = null)
+    public function __setInitializer(?Closure $initializer = null)
     {
         $this->initializer = $initializer;
     }
@@ -200,7 +201,7 @@ class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
     /**
      * {@inheritDoc}
      */
-    public function __setCloner(?\Closure $cloner = null)
+    public function __setCloner(?Closure $cloner = null)
     {
     }
 

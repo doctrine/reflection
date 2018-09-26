@@ -3,6 +3,7 @@
 namespace Doctrine\Tests\Common\Reflection;
 
 use Doctrine\Common\Annotations\Annotation;
+use stdClass;
 
 /**
  * @Annotation(
@@ -11,10 +12,10 @@ use Doctrine\Common\Annotations\Annotation;
  */
 class AnnotationClassWithScopeResolution
 {
-    public const FOO = \stdClass::class;
+    public const FOO = stdClass::class;
 
   /**
    * Example with comment.
    */
-    public const BAR = \stdClass::class;
+    public const BAR = stdClass::class;
 }
