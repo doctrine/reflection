@@ -13,13 +13,13 @@ use function substr;
 class StaticReflectionParserTest extends DoctrineTestCase
 {
     /**
-     * @dataProvider parentClassData
-     *
      * @param bool   $classAnnotationOptimize
      * @param string $parsedClassName
      * @param string $expectedClassName
      *
      * @return void
+     *
+     * @dataProvider parentClassData
      */
     public function testParentClass($classAnnotationOptimize, $parsedClassName, $expectedClassName)
     {
@@ -89,7 +89,7 @@ class StaticReflectionParserTest extends DoctrineTestCase
     {
         $testsRoot              = substr(__DIR__, 0, -strlen(__NAMESPACE__) - 1);
         $paths                  = [
-          'Doctrine\\Tests' => [$testsRoot],
+            'Doctrine\\Tests' => [$testsRoot],
         ];
         $staticReflectionParser = new StaticReflectionParser($class, new Psr0FindFile($paths), $classAnnotationOptimize);
         $expectedDocComment     = '/**

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e8f0044eb978b29d6e4603912a087b0",
+    "content-hash": "8abc4bd19c6e133429fced474da3659a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -274,28 +274,28 @@
         },
         {
             "name": "doctrine/coding-standard",
-            "version": "4.0.0",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/coding-standard.git",
-                "reference": "0469c18a1a4724c278f2879c0dd7b1fa860b52de"
+                "reference": "bb8de042a25c4fb59a2c55c350dc55cc00227a8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/coding-standard/zipball/0469c18a1a4724c278f2879c0dd7b1fa860b52de",
-                "reference": "0469c18a1a4724c278f2879c0dd7b1fa860b52de",
+                "url": "https://api.github.com/repos/doctrine/coding-standard/zipball/bb8de042a25c4fb59a2c55c350dc55cc00227a8c",
+                "reference": "bb8de042a25c4fb59a2c55c350dc55cc00227a8c",
                 "shasum": ""
             },
             "require": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.2",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
                 "php": "^7.1",
-                "slevomat/coding-standard": "^4.5.0",
-                "squizlabs/php_codesniffer": "^3.2.3"
+                "slevomat/coding-standard": "^4.8.0",
+                "squizlabs/php_codesniffer": "^3.3.2"
             },
             "type": "phpcodesniffer-standard",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "5.0.x-dev"
                 }
             },
             "autoload": {
@@ -317,18 +317,21 @@
                     "email": "st.mueller@dzh-online.de"
                 }
             ],
-            "description": "Doctrine Coding Standard",
-            "homepage": "http://www.doctrine-project.org",
+            "description": "The Doctrine Coding Standard is a set of PHPCS rules applied to all Doctrine projects.",
+            "homepage": "https://www.doctrine-project.org/projects/coding-standard.html",
             "keywords": [
+                "checks",
                 "code",
                 "coding",
                 "cs",
                 "doctrine",
+                "rules",
                 "sniffer",
+                "sniffs",
                 "standard",
                 "style"
             ],
-            "time": "2018-03-03T23:49:15+00:00"
+            "time": "2018-09-24T19:08:56+00:00"
         },
         {
             "name": "doctrine/collections",
@@ -2622,21 +2625,21 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.6.2",
+            "version": "4.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "d43b9a627cdcb7ce837a1d85a79b52645cdf44bc"
+                "reference": "5e878708a16a75ed11a7d9aa02f50c257065d4fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/d43b9a627cdcb7ce837a1d85a79b52645cdf44bc",
-                "reference": "d43b9a627cdcb7ce837a1d85a79b52645cdf44bc",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/5e878708a16a75ed11a7d9aa02f50c257065d4fe",
+                "reference": "5e878708a16a75ed11a7d9aa02f50c257065d4fe",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1",
-                "squizlabs/php_codesniffer": "^3.2.3"
+                "squizlabs/php_codesniffer": "^3.3.0"
             },
             "require-dev": {
                 "jakub-onderka/php-parallel-lint": "1.0.0",
@@ -2661,16 +2664,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.3.0",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "d86873af43b4aa9d1f39a3601cc0cfcf02b25266"
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d86873af43b4aa9d1f39a3601cc0cfcf02b25266",
-                "reference": "d86873af43b4aa9d1f39a3601cc0cfcf02b25266",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6ad28354c04b364c3c71a34e4a18b629cc3b231e",
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
                 "shasum": ""
             },
             "require": {

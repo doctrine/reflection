@@ -69,9 +69,9 @@ class StaticReflectionMethodTest extends TestCase
     }
 
     /**
-     * @dataProvider getNotImplementedMethods
-     *
      * @param mixed[] $args
+     *
+     * @dataProvider getNotImplementedMethods
      */
     public function testNotImplemented(string $method, array $args) : void
     {
