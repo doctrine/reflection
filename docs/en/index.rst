@@ -11,7 +11,7 @@ If this documentation is not helping to answer questions you have about
 Doctrine Reflection don't panic. You can get help from different sources:
 
 -  The `Doctrine Mailing List <https://groups.google.com/group/doctrine-user>`_
--  Gitter chat room `#doctrine/reflection <https://gitter.im/doctrine/reflection>`_
+-  Slack chat room `#reflection <https://www.doctrine-project.org/slack>`_
 -  Report a bug on `GitHub <https://github.com/doctrine/reflection/issues>`_.
 -  On `StackOverflow <https://stackoverflow.com/questions/tagged/doctrine-reflection>`_
 
