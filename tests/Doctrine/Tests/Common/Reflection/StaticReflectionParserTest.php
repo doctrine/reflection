@@ -110,6 +110,8 @@ class StaticReflectionParserTest extends DoctrineTestCase
             [ExampleAnnotationClass::class, true],
             [AnnotationClassWithScopeResolution::class, false],
             [AnnotationClassWithScopeResolution::class, true],
+            [AnnotationClassWithAnonymousClass::class, false],
+            [AnnotationClassWithAnonymousClass::class, true],
         ];
     }
 }
