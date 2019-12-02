@@ -27,7 +27,7 @@ class StaticReflectionPropertyTest extends TestCase
 
     public function testGetDeclaringClass() : void
     {
-        $staticReflectionClass = $this->createMock(StaticReflectionClass::class);
+        $staticReflectionClass = $this->createPartialMock(StaticReflectionClass::class, []);
 
         $this->staticReflectionParser->expects($this->once())
             ->method('getReflectionClass')
@@ -38,7 +38,7 @@ class StaticReflectionPropertyTest extends TestCase
 
     public function testGetDocComment() : void
     {
-        $staticReflectionClass = $this->createMock(StaticReflectionClass::class);
+        $staticReflectionClass = $this->createPartialMock(StaticReflectionClass::class, []);
 
         $this->staticReflectionParser->expects($this->once())
             ->method('getDocComment')
@@ -50,7 +50,7 @@ class StaticReflectionPropertyTest extends TestCase
 
     public function testGetUseStatements() : void
     {
-        $staticReflectionClass = $this->createMock(StaticReflectionClass::class);
+        $staticReflectionClass = $this->createPartialMock(StaticReflectionClass::class, []);
 
         $this->staticReflectionParser->expects($this->once())
             ->method('getUseStatements')
