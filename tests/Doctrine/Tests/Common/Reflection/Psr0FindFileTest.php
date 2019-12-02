@@ -4,10 +4,10 @@ namespace Doctrine\Tests\Common\Reflection;
 
 use Doctrine\Common\Reflection\Psr0FindFile;
 use PHPUnit\Framework\TestCase;
+use const DIRECTORY_SEPARATOR;
 use function sprintf;
 use function strlen;
 use function substr;
-use const DIRECTORY_SEPARATOR;
 
 class Psr0FindFileTest extends TestCase
 {
