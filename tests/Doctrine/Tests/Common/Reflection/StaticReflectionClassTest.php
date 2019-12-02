@@ -56,7 +56,7 @@ class StaticReflectionClassTest extends TestCase
 
     public function testGetMethod() : void
     {
-        $staticReflectionMethod = $this->createMock(StaticReflectionMethod::class);
+        $staticReflectionMethod = $this->createPartialMock(StaticReflectionMethod::class, []);
 
         $this->staticReflectionParser->expects($this->once())
             ->method('getReflectionMethod')

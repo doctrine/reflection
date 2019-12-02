@@ -4,6 +4,7 @@ namespace Doctrine\Tests\Common\Reflection;
 
 use Doctrine\Common\Reflection\Psr0FindFile;
 use PHPUnit\Framework\TestCase;
+use const DIRECTORY_SEPARATOR;
 use function sprintf;
 use function strlen;
 use function substr;
@@ -17,7 +18,7 @@ class Psr0FindFileTest extends TestCase
     {
         $file = $this->psr0FindFile->findFile(NoParent::class);
 
-        self::assertSame(sprintf('%s/NoParent.php', __DIR__), $file);
+        self::assertSame(sprintf('%s%sNoParent.php', __DIR__, DIRECTORY_SEPARATOR), $file);
     }
 
     public function testFindFileNotFound() : void
@@ -29,14 +30,14 @@ class Psr0FindFileTest extends TestCase
     {
         $file = $this->psr0FindFile->findFile('\Doctrine\Tests\Common\Reflection\NoParent');
 
-        self::assertSame(sprintf('%s/NoParent.php', __DIR__), $file);
+        self::assertSame(sprintf('%s%sNoParent.php', __DIR__, DIRECTORY_SEPARATOR), $file);
     }
 
     public function testFindFileFromPearLikeClassName() : void
     {
         $file = $this->psr0FindFile->findFile('Doctrine_Tests_Common_Reflection_NoParent');
 
-        self::assertSame(sprintf('%s/NoParent.php', __DIR__), $file);
+        self::assertSame(sprintf('%s%sNoParent.php', __DIR__, DIRECTORY_SEPARATOR), $file);
     }
 
     protected function setUp() : void
