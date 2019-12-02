@@ -18,6 +18,6 @@ class TypedNoDefaultReflectionProperty extends ReflectionProperty
      */
     public function getValue($object = null)
     {
-        return isset($object->{$this->getName()}) ? parent::getValue($object) : null;
+        return isset($object->{$this->name}) ? parent::getValue($object) : null;
     }
 }
