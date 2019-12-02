@@ -13,7 +13,7 @@ class TypedNoDefaultReflectionPropertyTest extends TestCase
 
         $reflProperty = new TypedNoDefaultReflectionProperty(TypedNoDefaultReflectionPropertyTestClass::class, 'test');
 
-        self::assertSame(null, $reflProperty->getValue($object));
+        self::assertNull($reflProperty->getValue($object));
 
         $object->test = 'testValue';
 
