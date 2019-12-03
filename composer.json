@@ -26,10 +26,10 @@
         "phpstan/phpstan-phpunit": "^0.11.0",
         "phpunit/phpunit": "^7.0",
         "doctrine/coding-standard": "^5.0",
-        "doctrine/common": "^2.8"
+        "doctrine/common": "^2.10"
     },
     "conflict": {
-        "doctrine/common": "<2.9@dev"
+        "doctrine/common": "<2.9"
     },
     "autoload": {
         "psr-4": {
