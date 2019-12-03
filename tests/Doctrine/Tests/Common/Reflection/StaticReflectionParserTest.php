@@ -101,7 +101,7 @@ class StaticReflectionParserTest extends DoctrineTestCase
     }
 
     /**
-     * @return string[]|bool[]
+     * @return array<array<bool|string>>
      */
     public function classAnnotationOptimize()
     {

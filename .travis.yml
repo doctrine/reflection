@@ -44,4 +44,4 @@ jobs:
         - ./vendor/bin/phpcs
 
     - stage: Lint
-      script: vendor/bin/phpstan analyse -l 3 -c phpstan.neon lib tests
+      script: vendor/bin/phpstan analyse
