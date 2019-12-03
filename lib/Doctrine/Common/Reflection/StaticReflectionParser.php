@@ -8,6 +8,7 @@ use const T_CLASS;
 use const T_DOC_COMMENT;
 use const T_EXTENDS;
 use const T_FUNCTION;
+use const T_NEW;
 use const T_PAAMAYIM_NEKUDOTAYIM;
 use const T_PRIVATE;
 use const T_PROTECTED;
@@ -161,7 +162,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
                     $docComment = $token[1];
                     break;
                 case T_CLASS:
-                    if ($last_token !== T_PAAMAYIM_NEKUDOTAYIM) {
+                    if ($last_token !== T_PAAMAYIM_NEKUDOTAYIM && $last_token !== T_NEW) {
                         $this->docComment['class'] = $docComment;
                         $docComment                = '';
                     }
