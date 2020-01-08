@@ -44,4 +44,5 @@ jobs:
         - ./vendor/bin/phpcs
 
     - stage: Lint
+      php: 7.4
       script: vendor/bin/phpstan analyse
