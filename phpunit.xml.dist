@@ -9,6 +9,7 @@
     <testsuites>
         <testsuite name="Doctrine Event Manager Test Suite">
             <directory>./tests/Doctrine/</directory>
+            <directory phpVersion="7.4" phpVersionOperator=">=">./tests/Doctrine_PHP74/</directory>
         </testsuite>
     </testsuites>
 
