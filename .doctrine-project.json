@@ -5,14 +5,29 @@
     "docsSlug": "doctrine-reflection",
     "versions": [
         {
-            "name": "1.0",
+            "name": "1.2",
             "branchName": "master",
-            "slug": "latest",
+            "slug": "1.2",
+            "upcoming": true,
+            "aliases": [
+                "latest"
+            ]
+        },
+        {
+            "name": "1.1",
+            "branchName": "1.1.x",
+            "slug": "1.1",
             "current": true,
             "aliases": [
                 "current",
                 "stable"
             ]
+        },
+        {
+            "name": "1.0",
+            "branchName": "1.0",
+            "slug": "1.0",
+            "maintained": false
         }
     ]
 }
