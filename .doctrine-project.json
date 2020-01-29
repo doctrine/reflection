@@ -7,11 +7,8 @@
         {
             "name": "1.2",
             "branchName": "master",
-            "slug": "1.2",
-            "upcoming": true,
-            "aliases": [
-                "latest"
-            ]
+            "slug": "latest",
+            "upcoming": true
         },
         {
             "name": "1.1",
