@@ -20,4 +20,29 @@ class TypedNoDefaultReflectionProperty extends ReflectionProperty
     {
         return $object !== null && $this->isInitialized($object) ? parent::getValue($object) : null;
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * Works around the problem with setting typed no default properties to
+     * NULL which is not supported, instead unset() to uninitialize.
+     *
+     * @link https://github.com/doctrine/orm/issues/7999
+     */
+    public function setValue($object, $value = null)
+    {
+        if ($value === null) {
+            $propertyName = $this->getName();
+
+            $unsetter = function () use ($propertyName) {
+                unset($this->$propertyName);
+            };
+            $unsetter = $unsetter->bindTo($object, $this->getDeclaringClass()->getName());
+            $unsetter();
+
+            return;
+        }
+
+        parent::setValue($object, $value);
+    }
 }
