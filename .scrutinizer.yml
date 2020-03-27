@@ -16,7 +16,7 @@ build:
                     - phpcs-run
     dependencies:
         override:
-            - composer install -noa
+            - COMPOSER_ROOT_VERSION=1.2 composer install -noa
 
 tools:
     external_code_coverage:
