@@ -21,6 +21,7 @@ before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
 
 install:
+  - composer validate --strict
   - rm composer.lock
   - travis_retry composer update -n --prefer-dist
 
