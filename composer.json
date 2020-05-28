@@ -17,7 +17,7 @@
         {"name": "Marco Pivetta", "email": "ocramius@gmail.com"}
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.1 || ^8.0",
         "ext-tokenizer": "*",
         "doctrine/annotations": "^1.0"
     },
