@@ -2,6 +2,10 @@ dist: trusty
 sudo: false
 language: php
 
+env:
+  global:
+    - COMPOSER_ROOT_VERSION=1.2
+
 cache:
   directories:
     - $HOME/.composer/cache

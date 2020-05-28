@@ -32,9 +32,26 @@ class TypedNoDefaultReflectionPropertyTest extends TestCase
         $object = new TypedFoo();
         $object->setId(1);
 
+        self::assertTrue($reflection->isInitialized($object));
+
         $reflection->setValue($object, null);
 
         self::assertNull($reflection->getValue($object));
+        self::assertFalse($reflection->isInitialized($object));
+    }
+
+    public function testSetValueNullOnNullableProperty() : void
+    {
+        $reflection = new TypedNoDefaultReflectionProperty(TypedNullableFoo::class, 'value');
+        $reflection->setAccessible(true);
+
+        $object = new TypedNullableFoo();
+
+        $reflection->setValue($object, null);
+
+        self::assertNull($reflection->getValue($object));
+        self::assertTrue($reflection->isInitialized($object));
+        self::assertNull($object->getValue());
     }
 }
 
@@ -50,5 +67,20 @@ class TypedFoo
     public function setId($id)
     {
         $this->id = $id;
+    }
+}
+
+class TypedNullableFoo
+{
+    private ?string $value;
+
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
     }
 }
