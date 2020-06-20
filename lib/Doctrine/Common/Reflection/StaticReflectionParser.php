@@ -19,6 +19,7 @@ use const T_VAR;
 use const T_VARIABLE;
 use function array_merge;
 use function file_get_contents;
+use function is_array;
 use function ltrim;
 use function preg_match;
 use function sprintf;
@@ -189,6 +190,9 @@ class StaticReflectionParser implements ReflectionProviderInterface
                     while (($token = $tokenParser->next()) && $token[0] !== T_STRING) {
                         continue;
                     }
+                    if ($token === null) {
+                        break;
+                    }
                     $methodName                              = $token[1];
                     $this->docComment['method'][$methodName] = $docComment;
                     $docComment                              = '';
@@ -222,7 +226,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
                     break;
             }
 
-            $last_token = $token[0];
+            $last_token = is_array($token) ? $token[0] : false;
         }
     }
 

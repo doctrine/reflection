@@ -13,7 +13,7 @@ class TypedNoDefaultReflectionProperty extends ReflectionProperty
      * {@inheritDoc}
      *
      * Checks that a typed property is initialized before accessing its value.
-     * This is neccessary to avoid PHP error "Error: Typed property must not be accessed before initialization".
+     * This is necessary to avoid PHP error "Error: Typed property must not be accessed before initialization".
      * Should be used only for reflecting typed properties without a default value.
      */
     public function getValue($object = null)

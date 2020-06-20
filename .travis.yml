@@ -21,6 +21,7 @@ before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
 
 install:
+  - composer validate --strict
   - rm composer.lock
   - travis_retry composer update -n --prefer-dist
 
@@ -37,9 +38,8 @@ jobs:
         - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
       script:
         - ./vendor/bin/phpunit --coverage-clover clover.xml
-      after_script:
-        - wget https://scrutinizer-ci.com/ocular.phar
-        - php ocular.phar code-coverage:upload --format=php-clover clover.xml
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
 
     - stage: Coding standard
       install:
