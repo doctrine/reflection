@@ -6,6 +6,10 @@ use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
 
+/**
+ * @deprecated This interface is deprecated without a replacement. Please use
+ *             another package.
+ */
 interface ReflectionProviderInterface
 {
     /**

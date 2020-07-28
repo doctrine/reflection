@@ -5,6 +5,10 @@ namespace Doctrine\Common\Reflection;
 use ReflectionClass;
 use ReflectionException;
 
+/**
+ * @deprecated This class is deprecated without a replacement. Please use
+ *             another package.
+ */
 class StaticReflectionClass extends ReflectionClass
 {
     /**

@@ -30,6 +30,9 @@ use function substr;
 
 /**
  * Parses a file for namespaces/use/class declarations.
+ *
+ * @deprecated This class is deprecated without a replacement. Please use
+ *             another package.
  */
 class StaticReflectionParser implements ReflectionProviderInterface
 {

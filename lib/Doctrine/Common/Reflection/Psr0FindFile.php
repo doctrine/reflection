@@ -11,6 +11,9 @@ use function substr;
 
 /**
  * Finds a class in a PSR-0 structure.
+ *
+ * @deprecated This class is deprecated without a replacement. Please use
+ *             another package.
  */
 class Psr0FindFile implements ClassFinderInterface
 {
