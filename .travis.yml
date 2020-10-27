@@ -43,7 +43,7 @@ jobs:
 
     - stage: Lint
       install:
-        - composer self-update --1
+        # Use lock file for install so old version of phpstan is used.
         - travis_retry composer install -n --prefer-dist
       php: 7.4
       script: vendor/bin/phpstan analyse
