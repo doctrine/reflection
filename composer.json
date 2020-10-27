@@ -22,7 +22,7 @@
         "doctrine/annotations": "^1.0"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^6.0",
+        "doctrine/coding-standard": "^6.0 || ^8.2.0",
         "doctrine/common": "^2.10",
         "phpstan/phpstan": "^0.11.0 || ^0.12.20",
         "phpstan/phpstan-phpunit": "^0.11.0 || ^0.12.16",
