@@ -11,39 +11,13 @@ cache:
     - $HOME/.composer/cache
 
 php:
-  - 7.1
-  - 7.2
-  - 7.3
   - 7.4
-  - nightly
 
 before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
 
 install:
-  - composer validate --strict
-  - rm composer.lock
-  - travis_retry composer update -n --prefer-dist
+  # Use lock file for install so old version of phpstan is used.
+  - travis_retry composer install -n --prefer-dist
 
-script: ./vendor/bin/phpunit
-
-jobs:
-  allow_failures:
-    - php: nightly
-
-  include:
-    - stage: Coverage
-      before_script:
-        - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
-        - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
-      script:
-        - ./vendor/bin/phpunit --coverage-clover clover.xml
-      after_success:
-        - bash <(curl -s https://codecov.io/bash)
-
-    - stage: Lint
-      install:
-        # Use lock file for install so old version of phpstan is used.
-        - travis_retry composer install -n --prefer-dist
-      php: 7.4
-      script: vendor/bin/phpstan analyse
+script: ./vendor/bin/phpstan analyse

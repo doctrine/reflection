@@ -26,7 +26,7 @@
         "doctrine/common": "^2.10",
         "phpstan/phpstan": "^0.11.0 || ^0.12.20",
         "phpstan/phpstan-phpunit": "^0.11.0 || ^0.12.16",
-        "phpunit/phpunit": "^7.5 || ^9.1.5"
+        "phpunit/phpunit": "^7.5 || ^8.0 || ^9.1.5"
     },
     "conflict": {
         "doctrine/common": "<2.9"
