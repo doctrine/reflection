@@ -7,5 +7,8 @@ parameters:
     ignoreErrors:
         - '#Doctrine\\Common\\Reflection\\StaticReflection[a-zA-Z0-9_]+::__construct\(\) does not call parent constructor from Reflection[a-zA-Z0-9_]+#'
 
+    excludes_analyse:
+        - lib/Doctrine/Common/Reflection/Compatibility/ReflectionClass.php
+        - lib/Doctrine/Common/Reflection/Compatibility/ReflectionMethod.php
 includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
