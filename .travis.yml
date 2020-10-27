@@ -41,12 +41,6 @@ jobs:
       after_success:
         - bash <(curl -s https://codecov.io/bash)
 
-    - stage: Coding standard
-      install:
-        - travis_retry composer install -n --prefer-dist
-      script:
-        - ./vendor/bin/phpcs
-
     - stage: Lint
       php: 7.4
       script: vendor/bin/phpstan analyse
