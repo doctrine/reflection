@@ -17,16 +17,16 @@
         {"name": "Marco Pivetta", "email": "ocramius@gmail.com"}
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.1 || ^8.0",
         "ext-tokenizer": "*",
         "doctrine/annotations": "^1.0"
     },
     "require-dev": {
         "doctrine/coding-standard": "^6.0",
         "doctrine/common": "^2.10",
-        "phpstan/phpstan": "^0.11.0",
-        "phpstan/phpstan-phpunit": "^0.11.0",
-        "phpunit/phpunit": "^7.0"
+        "phpstan/phpstan": "^0.11.0 || ^0.12.20",
+        "phpstan/phpstan-phpunit": "^0.11.0 || ^0.12.16",
+        "phpunit/phpunit": "^7.5 || ^9.1.5"
     },
     "conflict": {
         "doctrine/common": "<2.9"
@@ -43,10 +43,7 @@
         }
     },
     "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "7.1.0"
-        }
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
