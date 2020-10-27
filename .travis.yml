@@ -1,4 +1,4 @@
-dist: trusty
+dist: xenial
 sudo: false
 language: php
 
@@ -42,5 +42,8 @@ jobs:
         - bash <(curl -s https://codecov.io/bash)
 
     - stage: Lint
+      install:
+        # Use lock file for install so old version of phpstan is used.
+        - travis_retry composer install -n --prefer-dist
       php: 7.4
       script: vendor/bin/phpstan analyse
