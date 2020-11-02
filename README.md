@@ -1,3 +1,7 @@
+⚠ This package is abandoned, consider migrating to alternatives, such as
+`roave/better-reflection`. Features that are still useful to Doctrine have been
+moved to `doctrine/persistence`⚠
+
 # Doctrine Reflection
 
 [![Build Status](https://travis-ci.org/doctrine/reflection.svg)](https://travis-ci.org/doctrine/reflection)
