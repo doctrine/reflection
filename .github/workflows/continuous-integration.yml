@@ -59,6 +59,9 @@ jobs:
           key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
 
+      - name: "Remove dev tools incompatible with latest PHP versions"
+        run: "composer remove --dev phpstan/phpstan doctrine/coding-standard --no-update"
+
       - name: "Install dependencies with composer"
         run: "composer update --no-interaction --prefer-dist"
 
