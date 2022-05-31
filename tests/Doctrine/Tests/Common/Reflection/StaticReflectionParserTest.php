@@ -7,6 +7,7 @@ use Doctrine\Common\Reflection\StaticReflectionParser;
 use Doctrine\Tests\Common\Reflection\Dummies\NoParent as NoParentDummy;
 use Doctrine\Tests\DoctrineTestCase;
 use ReflectionException;
+
 use function strlen;
 use function substr;
 

@@ -4,6 +4,7 @@ namespace Doctrine\Common\Reflection;
 
 use Doctrine\Common\Proxy\Proxy;
 use ReflectionProperty;
+use ReturnTypeWillChange;
 
 /**
  * PHP Runtime Reflection Public Property - special overrides for public properties.
@@ -17,7 +18,7 @@ class RuntimePublicReflectionProperty extends ReflectionProperty
      * This is to avoid calling `__get` on the provided $object if it
      * is a {@see \Doctrine\Common\Proxy\Proxy}.
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function getValue($object = null)
     {
         $name = $this->getName();
@@ -42,7 +43,7 @@ class RuntimePublicReflectionProperty extends ReflectionProperty
      *
      * @link https://bugs.php.net/bug.php?id=63463
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function setValue($object, $value = null)
     {
         if (! ($object instanceof Proxy && ! $object->__isInitialized())) {

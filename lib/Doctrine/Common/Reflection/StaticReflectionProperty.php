@@ -4,6 +4,7 @@ namespace Doctrine\Common\Reflection;
 
 use ReflectionException;
 use ReflectionProperty;
+use ReturnTypeWillChange;
 
 class StaticReflectionProperty extends ReflectionProperty
 {
@@ -33,6 +34,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function getName()
     {
         return $this->propertyName;
@@ -49,6 +51,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function getDeclaringClass()
     {
         return $this->getStaticReflectionParser()->getReflectionClass();
@@ -57,6 +60,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function getDocComment()
     {
         return $this->getStaticReflectionParser()->getDocComment('property', $this->propertyName);
@@ -81,6 +85,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function getModifiers()
     {
         throw new ReflectionException('Method not implemented');
@@ -89,6 +94,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function getValue($object = null)
     {
         throw new ReflectionException('Method not implemented');
@@ -97,6 +103,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function isDefault()
     {
         throw new ReflectionException('Method not implemented');
@@ -105,6 +112,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function isPrivate()
     {
         throw new ReflectionException('Method not implemented');
@@ -113,6 +121,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function isProtected()
     {
         throw new ReflectionException('Method not implemented');
@@ -121,6 +130,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function isPublic()
     {
         throw new ReflectionException('Method not implemented');
@@ -129,6 +139,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function isStatic()
     {
         throw new ReflectionException('Method not implemented');
@@ -137,6 +148,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function setAccessible($accessible)
     {
         throw new ReflectionException('Method not implemented');
@@ -145,6 +157,7 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
+    #[ReturnTypeWillChange]
     public function setValue($object, $value = null)
     {
         throw new ReflectionException('Method not implemented');

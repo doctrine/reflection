@@ -1,4 +1,3 @@
-
 name: "Static Analysis"
 
 on:
@@ -9,19 +8,17 @@ on:
     branches:
       - "*.x"
 
-env:
-  fail-fast: true
-  COMPOSER_ROOT_VERSION: "1.2"
-
 jobs:
-  static-analysis-phpstan:
-    name: "Static Analysis with PHPStan"
+  phpstan:
+    name: "PHPStan"
     runs-on: "ubuntu-20.04"
+    env:
+      COMPOSER_ROOT_VERSION: "1.2"
 
     strategy:
       matrix:
         php-version:
-          - "7.4"
+          - "8.1"
 
     steps:
       - name: "Checkout code"
@@ -33,15 +30,10 @@ jobs:
           coverage: "none"
           php-version: "${{ matrix.php-version }}"
 
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
         with:
-          path: "~/.composer/cache"
-          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
-
-      - name: "Install dependencies with composer"
-        run: "composer install --no-interaction --no-progress --no-suggest"
+          dependency-versions: "highest"
 
       - name: "Run a static analysis with phpstan/phpstan"
         run: "vendor/bin/phpstan analyse"

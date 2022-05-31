@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class TypedNoDefaultReflectionPropertyTest extends TestCase
 {
-    public function testGetValue() : void
+    public function testGetValue(): void
     {
         $object = new TypedNoDefaultReflectionPropertyTestClass();
 
@@ -24,7 +24,7 @@ class TypedNoDefaultReflectionPropertyTest extends TestCase
         self::assertNull($reflProperty->getValue($object));
     }
 
-    public function testSetValueNull() : void
+    public function testSetValueNull(): void
     {
         $reflection = new TypedNoDefaultReflectionProperty(TypedFoo::class, 'id');
         $reflection->setAccessible(true);
@@ -40,7 +40,7 @@ class TypedNoDefaultReflectionPropertyTest extends TestCase
         self::assertFalse($reflection->isInitialized($object));
     }
 
-    public function testSetValueNullOnNullableProperty() : void
+    public function testSetValueNullOnNullableProperty(): void
     {
         $reflection = new TypedNoDefaultReflectionProperty(TypedNullableFoo::class, 'value');
         $reflection->setAccessible(true);
