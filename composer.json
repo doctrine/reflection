@@ -22,11 +22,11 @@
         "doctrine/annotations": "^1.0"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^6.0",
-        "doctrine/common": "^2.10",
-        "phpstan/phpstan": "^0.11",
-        "phpstan/phpstan-phpunit": "^0.11.0 || ^0.12.16",
-        "phpunit/phpunit": "^7.5 || ^8.0 || ^9.1.5"
+        "doctrine/coding-standard": "^9",
+        "doctrine/common": "^3.3",
+        "phpstan/phpstan": "^1.4.10",
+        "phpstan/phpstan-phpunit": "^1",
+        "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5"
     },
     "conflict": {
         "doctrine/common": "<2.9"
@@ -43,6 +43,9 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
         "sort-packages": true
     },
     "abandoned": "roave/better-reflection"

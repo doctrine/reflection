@@ -2,12 +2,13 @@
 
 namespace Doctrine\Common\Reflection;
 
-use const DIRECTORY_SEPARATOR;
 use function is_file;
 use function str_replace;
 use function strpos;
 use function strrpos;
 use function substr;
+
+use const DIRECTORY_SEPARATOR;
 
 /**
  * Finds a class in a PSR-0 structure.

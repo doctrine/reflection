@@ -6,8 +6,8 @@ use Doctrine\Common\Reflection\StaticReflectionClass;
 use Doctrine\Common\Reflection\StaticReflectionMethod;
 use Doctrine\Common\Reflection\StaticReflectionParser;
 use Doctrine\Common\Reflection\StaticReflectionProperty;
-use PHPStan\Testing\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use ReflectionException;
 
 class StaticReflectionClassTest extends TestCase
@@ -18,7 +18,7 @@ class StaticReflectionClassTest extends TestCase
     /** @var StaticReflectionClass */
     private $staticReflectionClass;
 
-    public function testGetName() : void
+    public function testGetName(): void
     {
         $this->staticReflectionParser->expects($this->once())
             ->method('getClassName')
@@ -27,7 +27,7 @@ class StaticReflectionClassTest extends TestCase
         self::assertSame('ClassName', $this->staticReflectionClass->getName());
     }
 
-    public function testGetDocComment() : void
+    public function testGetDocComment(): void
     {
         $this->staticReflectionParser->expects($this->once())
             ->method('getDocComment')
@@ -36,7 +36,7 @@ class StaticReflectionClassTest extends TestCase
         self::assertSame('test doc comment', $this->staticReflectionClass->getDocComment());
     }
 
-    public function testGetNamespaceName() : void
+    public function testGetNamespaceName(): void
     {
         $this->staticReflectionParser->expects($this->once())
             ->method('getNamespaceName')
@@ -45,7 +45,7 @@ class StaticReflectionClassTest extends TestCase
         self::assertSame('Namespace', $this->staticReflectionClass->getNamespaceName());
     }
 
-    public function testGetUseStatements() : void
+    public function testGetUseStatements(): void
     {
         $this->staticReflectionParser->expects($this->once())
             ->method('getUseStatements')
@@ -54,7 +54,7 @@ class StaticReflectionClassTest extends TestCase
         self::assertSame(['ClassName'], $this->staticReflectionClass->getUseStatements());
     }
 
-    public function testGetMethod() : void
+    public function testGetMethod(): void
     {
         $staticReflectionMethod = $this->createPartialMock(StaticReflectionMethod::class, []);
 
@@ -66,7 +66,7 @@ class StaticReflectionClassTest extends TestCase
         self::assertSame($staticReflectionMethod, $this->staticReflectionClass->getMethod('method'));
     }
 
-    public function testGetProperty() : void
+    public function testGetProperty(): void
     {
         $staticReflectionProperty = $this->createMock(StaticReflectionProperty::class);
 
@@ -83,7 +83,7 @@ class StaticReflectionClassTest extends TestCase
      *
      * @dataProvider getNotImplementedMethods
      */
-    public function testNotImplemented(string $method, array $args) : void
+    public function testNotImplemented(string $method, array $args): void
     {
         $this->expectException(ReflectionException::class);
         $this->expectExceptionMessage('Method not implemented');
@@ -94,7 +94,7 @@ class StaticReflectionClassTest extends TestCase
     /**
      * @return mixed[]
      */
-    public function getNotImplementedMethods() : array
+    public function getNotImplementedMethods(): array
     {
         return [
             ['export', ['Test', 'Test', true]],
@@ -143,7 +143,7 @@ class StaticReflectionClassTest extends TestCase
         ];
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->staticReflectionParser = $this->createMock(StaticReflectionParser::class);
 

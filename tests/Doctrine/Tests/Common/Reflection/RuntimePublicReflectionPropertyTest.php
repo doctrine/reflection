@@ -2,15 +2,17 @@
 
 namespace Doctrine\Tests\Common\Reflection;
 
+use BadMethodCallException;
 use Closure;
 use Doctrine\Common\Proxy\Proxy;
 use Doctrine\Common\Reflection\RuntimePublicReflectionProperty;
 use PHPUnit\Framework\TestCase;
+
 use function call_user_func;
 
 class RuntimePublicReflectionPropertyTest extends TestCase
 {
-    public function testGetValue() : void
+    public function testGetValue(): void
     {
         $object = new RuntimePublicReflectionPropertyTestClass();
 
@@ -23,7 +25,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
         self::assertNull($reflProperty->getValue($object));
     }
 
-    public function testSetValue() : void
+    public function testSetValue(): void
     {
         $object = new RuntimePublicReflectionPropertyTestClass();
 
@@ -36,7 +38,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
         self::assertSame('changedValue', $reflProperty->getValue($object));
     }
 
-    public function testGetValueOnProxyPublicProperty() : void
+    public function testGetValueOnProxyPublicProperty(): void
     {
         $getCheckMock = $this->getMockBuilder('stdClass')->setMethods(['callGet'])->getMock();
         $getCheckMock->expects($this->never())->method('callGet');
@@ -57,7 +59,7 @@ class RuntimePublicReflectionPropertyTest extends TestCase
         self::assertNull($reflProperty->getValue($mockProxy));
     }
 
-    public function testSetValueOnProxyPublicProperty() : void
+    public function testSetValueOnProxyPublicProperty(): void
     {
         $setCheckMock = $this->getMockBuilder('stdClass')->setMethods(['neverCallSet'])->getMock();
         $setCheckMock->expects($this->never())->method('neverCallSet');
@@ -130,6 +132,7 @@ class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
      */
     public function __getLazyProperties()
     {
+        throw new BadMethodCallException('Not implemented.');
     }
 
     /**
@@ -210,6 +213,7 @@ class RuntimePublicReflectionPropertyTestProxyMock implements Proxy
      */
     public function __getCloner()
     {
+        throw new BadMethodCallException('Not implemented.');
     }
 }
 
