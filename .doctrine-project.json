@@ -1,5 +1,5 @@
 {
-    "active": true,
+    "active": false,
     "name": "Reflection",
     "slug": "reflection",
     "docsSlug": "doctrine-reflection",
